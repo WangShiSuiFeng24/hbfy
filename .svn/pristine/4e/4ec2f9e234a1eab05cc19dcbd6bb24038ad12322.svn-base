@@ -1,0 +1,82 @@
+package com.ccnu.nrcci.hbnmhmap.Adapter;
+
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.ccnu.nrcci.hbnmhmap.HttpService.InterfaceConfig;
+
+import com.ccnu.nrcci.hbnmhmap.R;
+import com.ccnu.nrcci.hbnmhmap.Util.ImageLoader;
+
+import java.util.List;
+import java.util.Map;
+
+public class ProjectListViewAdapter extends BaseAdapter {
+    List<Map<String,String>> alertList;
+    private Context context;
+    private ImageLoader imageLoader;
+    public ProjectListViewAdapter(List<Map<String,String>> list, Context context)
+    {
+        this.context=context;
+        this.alertList = list;
+        this.imageLoader=new ImageLoader();
+    }
+    @Override
+    public int getCount(){
+        return alertList.size();
+    }
+    @Override
+    public Object getItem(int position){
+        return alertList.get(position);
+    }
+    @Override
+    public long getItemId(int position){
+        return 0;
+    }
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent){
+        ViewHolder vh;
+        if(convertView==null){
+            vh=new ViewHolder();
+            convertView= LayoutInflater.from(context).inflate(R.layout.item_project,parent,false);
+            vh.detailImag=(ImageView) convertView.findViewById(R.id.image) ;
+            vh.projectName=(TextView) convertView.findViewById(R.id.tv_name) ;
+            vh.projectType=(TextView) convertView.findViewById(R.id.tv_type) ;
+            vh.projectRank=(TextView) convertView.findViewById(R.id.tv_rank) ;
+
+            convertView.setTag(vh);
+        }else{
+            vh=(ViewHolder) convertView.getTag();
+        }
+        try{
+
+            vh.projectName.setText(alertList.get(position).get("NAME"));
+            vh.projectType.setText(alertList.get(position).get("TYPE"));
+            vh.projectRank.setText(alertList.get(position).get("RANK"));
+
+            vh.detailImag.setTag(InterfaceConfig.IP+alertList.get(position).get("IMAGEURL"));
+            imageLoader.showImageByAsyncTask(vh.detailImag,InterfaceConfig.IP+alertList.get(position).get("IMAGEURL"));
+
+
+        }catch(Exception e){e.printStackTrace();}
+
+
+        return convertView;
+
+    }
+    private class ViewHolder{
+        ImageView detailImag;
+        TextView projectName;
+        TextView projectType;
+        TextView projectRank;
+        ImageView naviegateImag;
+
+    }
+}

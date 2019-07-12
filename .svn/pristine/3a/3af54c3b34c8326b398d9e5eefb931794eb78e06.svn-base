@@ -1,0 +1,4 @@
+package com.ccnu.nrcci.hbnmhmap.Fragment;
+
+public class MapFragment extends android.app.Fragment {
+}

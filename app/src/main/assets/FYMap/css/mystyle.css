@@ -1,0 +1,211 @@
+/* 代码整理：懒人之家 www.lanrenzhijia.com */
+*{ margin:0; padding:0;}
+body{ text-align:center;}
+#bn {
+	height: 530px;
+	position: relative;
+	overflow: hidden;
+
+	margin-right: auto;
+	margin-left: auto;
+}
+#bn .tu {
+	text-align: center;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#bn #hao .xu {
+	background-image: url(../images/imagehei.png);
+	display: inline;
+	float: left;
+	height: 49px;
+	width: 59px;
+	line-height: 49px;
+	color: #FFFFFF;
+	font-size: 24px;
+	font-weight: bolder;
+	cursor:pointer;
+	background-repeat: no-repeat;
+	background-position: center center;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	text-align:center;
+}
+
+#bn #hao {
+	position: absolute;
+	right: 50px;
+	height: 53px;
+	width: 330px;
+	z-index: 3;
+	bottom: 0px;
+}
+#bn .txt {
+	display: block;
+	position: absolute;
+	top: 423px;
+	height: 53px;
+	width: 385px;
+	right: 50px;
+	z-index: 3;
+}
+
+#bn .txt .zi1 {
+	background-image: url(../images/txtbg.png);
+	background-repeat: no-repeat;
+	display: block;
+	height: 53px;
+	width: 154px;
+	font-size: 14px;
+	font-style: normal;
+	line-height: 50px;
+	color: #FFFFFF;
+	font-weight: bold;
+	position: absolute;
+	left: 7px;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	background-position: center center;
+	z-index: 3;
+}
+#bn .txt .zi2 {
+	background-image: url(../images/txtbg.png);
+	background-repeat: no-repeat;
+	display: block;
+	height: 53px;
+	width: 154px;
+	font-size: 14px;
+	font-style: normal;
+	line-height: 50px;
+	color: #FFFFFF;
+	font-weight: bold;
+	position: absolute;
+	left: 66px;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	background-position: center center;
+	z-index: 3;
+	text-align:center;
+}
+#bn .txt .zi3 {
+	background-image: url(../images/txtbg.png);
+	background-repeat: no-repeat;
+	display: block;
+	height: 53px;
+	width: 154px;
+	font-size: 14px;
+	font-style: normal;
+	line-height: 50px;
+	color: #FFFFFF;
+	font-weight: bold;
+	position: absolute;
+	left: 125px;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	text-align:center;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	background-position: center center;
+	z-index: 3;
+}
+#bn .txt .zi4{
+	background-image: url(../images/txtbg.png);
+	background-repeat: no-repeat;
+	display: block;
+	height: 53px;
+	width: 154px;
+	font-size: 14px;
+	font-style: normal;
+	line-height: 50px;
+	color: #FFFFFF;
+	font-weight: bold;
+	position: absolute;
+	left: 183px;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	text-align:center;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	background-position: center center;
+	z-index: 3;
+}
+#bn .txt .zi5 {
+	background-image: url(../images/txtbg.png);
+	background-repeat: no-repeat;
+	display: block;
+	height: 53px;
+	width: 154px;
+	font-size: 14px;
+	font-style: normal;
+	line-height: 50px;
+	color: #FFFFFF;
+	font-weight: bold;
+	position: absolute;
+	left: 243px;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	background-position: center center;
+	z-index: 3;
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+}
+#bn .tiao {
+	background-color: #000000;
+	height: 25px;
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+	z-index: 2;
+	left: 0px;
+	filter:alpha(opacity=30);
+
+	-moz-opacity:0.3;
+	
+	-khtml-opacity: 0.3;
+	
+	opacity: 0.3;
+
+
+}
+#bn .tu .lianjie {
+	display: block;
+	height: 530px;
+}
+/* 代码整理：懒人之家 www.lanrenzhijia.com */

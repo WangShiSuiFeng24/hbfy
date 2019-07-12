@@ -1,0 +1,102 @@
+body{
+	       padding: 0px;
+       margin: 0px;	
+   }
+
+.top{
+	margin-top:0px;
+	width: 100%;
+	height: auto;
+}
+.top .login
+{
+
+	width: 100%;
+	height: 40px;
+	background-color: #891A20;
+}
+.top .logo
+{
+	width: 100%;
+	height: 100px;
+	background-image: url(images/logo__u268.jpg);
+}
+.navigation{
+
+	width:100%;
+	height:40px;
+	background:#C1353D;
+	box-shadow: 5px 5px 3px #888888;
+}
+ul#nav{ width:1200px; height:40px; background:#C1353D;margin:0 auto;} 
+ul#nav li{display:inline; height:40px} 
+ul#nav li a{display:inline-block; padding:0 20px; height:40px; line-height:40px;
+ color:#FFF; font-family:"Microsoft YaHei"; font-weight:600;font-size:14px;text-decoration:none} 
+ul#nav li a:hover{background:#891A20}
+
+
+ul#img{padding: 0; list-style: none; width: 100%;  overflow: hidden; text-align: justify;}
+ul#img li{float: left; width: 11.1%;text-align: center;}
+
+
+
+
+
+.searchs{
+	margin:8px auto;
+	float: right;
+	padding-right: 120px ;
+    
+}
+
+.content{
+	
+	width: 100%;
+	margin: 0 auto;
+	height:auto;
+}
+
+
+
+
+
+.bottom{
+    /*margin-top:10px;*/
+	width: 100%;
+	height: 200px;
+}
+.bottomTop{
+    width: 100%;
+    height: 40px;
+    background-color: #C1353D;
+}
+.bottomTopCenter{
+width: 300px;
+padding-top: 8px;
+height: 25px;
+margin: 0 auto;
+color: white;
+font-size: 13px;
+}
+
+.bottomDown{
+	background-color: #3B3B3B;
+	width: 100%;
+	height: 60px;
+}
+.bottomDownCenter
+{
+    
+	width:70px;
+	height: 110px;
+	margin:0 auto;
+	font-size: 15px;
+	color: white;
+}
+.bottomDownCenter2{
+     text-align:center;
+      width: 70%;
+      margin: 0 auto;
+    color: white;
+    font-size: 12px;
+}

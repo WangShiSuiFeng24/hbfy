@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="css/mystyle.css" />
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+    <title>非遗分布地图</title>
+    <script type="text/javascript" src="js/ol.js"></script>
+    <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="js/echarts.js"></script>
+    <link rel="stylesheet" href="css/ol.css" />
+    <link rel="stylesheet" href="css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="css/myImg.css" />
+    <link rel="stylesheet" href="css/mapPhone.css" />
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        #content {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="top" style="display:none">
+        <div class="logo" style="height: 100px">
+            <img src="images/logo_u256.png" style="padding-left: 356px; padding-top: 15px; height: 70px; width: 70px; float: left;" />
+            <label style="margin-left:23px; padding-top:22px; font-size:38px; color:white; float:left; font-family:SimHei">湖北省非物质文化遗产综合展示平台</label>
+        </div>
+    </div>
+    <div class="navigation" style="display:none">
+        <ul id="nav" style="width: 1200px">
+            <li><a href="index.aspx">首页</a></li>
+            <li><a href="news.aspx">新闻动态</a></li>
+            <li><a href="map.html">非遗地图</a></li>
+            <li><a href="feiyiXm.aspx">非遗项目</a></li>
+            <li><a href="InheritorTable.aspx">传承人</a></li>
+            <li><a href="CyDataR.aspx">产业数据</a></li>
+            <li><a href="AboutUs.aspx">关于我们</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <div id="left_mainmap" class="Left_Navigation" style="display: block">
+            <!--左侧的导航栏，工具条，顶部-->
+            <div id="InfoBox" class="InfoBox" style="padding-top: 3px; display: none">
+                <div style="float: left; margin-left: 12px; margin-top: 7px; opacity: 0.8;">
+                    <img src="images/home.png" />
+                </div>
+                <span style="font-weight: bold;">非遗地图</span>
+                <div style="float: right; margin-right: 6px; margin-top: 5px;">
+                    <img src="images/select.png" id="showContent" style="cursor: pointer; opacity: 0.8;" />
+                </div>
+            </div>
+
+            <!--导航栏工具条，下面的详细分类-->
+            <div class="ContentBox" style="display: none; overflow: auto; text-align:left">
+                <div style="float: left;">
+                    <div class="SelectItem" style="width: 53px; height: 49px; text-align: center; background-color: darkgray;">
+                        <img src="images/zhuanti.png" id="SelectByItem" style="margin: 10px; cursor: pointer; opacity: 0.7; width: 30px; height: 30px;" />
+                    </div>
+                </div>
+                <div class="ItemBox" id="ByItem" style="display: block; overflow: auto; padding-left: 5px">
+                    <div class="classify-tool clearfix">
+                        <p class="classify-title" style="margin-top: 15px; margin-left: 5px; font-family: '微软雅黑'; font-weight: 400; font-style: normal; font-size: 18px;">专题</p>
+                    </div>
+                    <ul class="classify-box">
+                        <li class="children children-lv1" id="">
+                            <a id="ByCity" class="lv1-title" href="javascript:void(0);">
+                                按行政区
+                                <span class="triangle-down">
+                                    <img src="images/show1.png" />
+                                </span>
+                            </a>
+                            <ul id="City" class="ul-leaf" style="display: none;">
+                            </ul>
+                        </li>
+                        <li class="children children-lv1" id="subject_1">
+                            <a id="ByCategory" class="lv1-title" href="javascript:void(0);" style="">
+                                按项目类别
+                                <span class="triangle-down">
+                                    <img src="images/show1.png" />
+                                </span>
+                            </a>
+                            <ul id="Category" class="ul-leaf" style="display: none;">
+                                <li class="children children-lv2" id="chuanshuo">
+                                    <a class="CategoryName" id="1" href="javascript:void(0);">民间传说</a>
+                                    <div class="lv2-info"></div>
+                                </li>
+                                <li class="children children-lv2" id="yinyue">
+                                    <a class="CategoryName" id="2" href="javascript:void(0);">传统音乐</a>
+                                    <div class="lv2-info"></div>
+                                </li>
+                                <li class="children children-lv2" id="wudao">
+                                    <a class="CategoryName" id="3" href="javascript:void(0);">传统舞蹈</a>
+                                    <div class="lv2-info"></div>
+                                </li>
+                                <li class="children children-lv2" id="xiju">
+                                    <a class="CategoryName" id="4" href="javascript:void(0);">传统戏剧</a>
+                                    <div class="lv2-info"></div>
+                                </li>
+                                <li class="children children-lv2" id="quyi">
+                                    <a class="CategoryName" id="5" href="javascript:void(0);">曲艺</a>
+                                    <div class="lv2-info"></div>
+                                </li>
+                                <li class="children children-lv2" id="jiyi">
+                                    <a class="CategoryName" id="6" href="javascript:void(0);">传统技艺</a>
+                                    <div class="lv2-info"></div>
+                                </li>
+                                <li class="children children-lv2" id="meishu">
+                                    <a class="CategoryName" id="7" href="javascript:void(0);">传统美术</a>
+                                    <div class="lv2-info"></div>
+                                </li>
+                                <li class="children children-lv2" id="tiyu">
+                                    <a class="CategoryName" id="8" href="javascript:void(0);">传统体育</a>
+                                    <div class="lv2-info"></div>
+                                </li>
+                                <li class="children children-lv2" id="yiyao">
+                                    <a class="CategoryName" id="9" href="javascript:void(0);">传统医药</a>
+                                    <div class="lv2-info"></div>
+                                </li>
+                                <li class="children children-lv2" id="minsu">
+                                    <a class="CategoryName" id="10" href="javascript:void(0);">民俗</a>
+                                    <div class="lv2-info"></div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--弹窗设计-->
+        <div id="popup" class="ol-popup">
+            <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+            <p class="popup-title" style="font-family: '宋体'; font-size: 15px; font-weight: bold; color: rgb(0,128,0); padding-top: 3px; margin: 0px;">夏式丹药制作技艺</p>
+            <div class="imgshow">
+                <img id="img1" class="popup-img" alt="缩略图" src='' />
+            </div>
+            <table class="pop-table">
+                <tr class="tr2">
+                    <td id="td_1" class="pop-td" style="border-right: 3px solid #E0E0E0; text-align:center; font-weight:bold">项目类型</td>
+                    <td id="Item-type" colspan="3" class="pop-td-bold" style="text-align:center">传统技艺</td>
+                </tr>
+                <tr class="tr2">
+                    <td id="td_2" colspan="2" class="pop-td" style="text-align:center; font-weight:bold">传承人:&nbsp;<label for="" id="Item-inher_0"></label>
+                        <label for="" id="Item-inher_1"></label>
+                        <label for="" id="Item-inher_2"></label></td>
+
+                    <!-- <td id="Item-inher_0" class="pop-td-bold"></td>
+                    <td id="Item-inher_1" class="pop-td-bold"></td>
+                    <td id="Item-inher_2" class="pop-td-bold"></td> -->
+                </tr>
+                <tr class="tr2">
+                    <td class="pop-td" colspan="4" style="text-align: left; ">
+                        <span class="pop-Introduce" style="font-size:8px"></span>
+                    </td>
+                </tr>
+            </table>
+            <!--<span class="lookMore"></span>-->
+            <ul id="nav"  style="width: 90%; border-radius: 5px">
+                <li id="detailLink"><a  href="#" target="_blank">详细介绍</a></li>
+                <li id="influenceArea"><a  href="#">影响范围</a></li>
+            </ul>
+            <!--<a style="float: right;margin-right: 10px;margin-top: -10px;font-size:10px" target=_blank href="detailXm.aspx?title=' + ItemCode + '">更多</a></div>')-->
+        </div>
+
+        <!-- 弹窗 -->
+        <div id="myModal" class="modal">
+            <!-- 关闭按钮 -->
+            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+            <!-- 弹窗内容 -->
+            <img class="modal-content" id="img01">
+        </div>
+
+        <!--右侧表格弹窗-->
+        <div class="table-all" style="display:none">
+            <div class="table-title">
+                <span class="ItemStyle" style="color: white">民间传说</span>
+                <span class="ItemSum" style="color: white"></span>
+                <span class="table-close" style="color: white; float: right; margin-right: 10px; cursor: pointer;">✖</span>
+            </div>
+            <div class="table-container" style="text-align: center; font-size: 8px;">
+            </div>
+        </div>
+
+        <!--右侧统计chart弹窗-->
+        <div class="chart-all">
+            <div class="chart-title">
+                <span class="chartItemStyle" style="color: white">民间传说</span>
+                <span class="chartItemSum" style="color: white"></span>
+                <input type="button" class="btnData" style="background-color: dimgray; color: white; margin-left: 50px" value="查看数据" />
+                <span class="chart-close" style="color: white; float: right; margin-right: 10px; cursor: pointer;">✖</span>
+            </div>
+            <div class="chart-container" id="main" style="text-align: center; font-size: 8px; width: 380px; height: 350px; background-color: white">
+            </div>
+        </div>
+
+        <!--地图内容-->
+        <div id="map" class="map">
+            <div id="control_bar">
+
+                <!--搜索框控件-->
+                <div id="search_bar" class="search_bar">
+                    <input class="input" placeholder="搜非遗项目、传承人..." type="text" name="key" id="search" />
+                    <input class="search_btn" type="submit" value="" />
+                    <span class="search_ico"></span>
+                </div>
+
+                <div id="search_result">
+                    <ul id="result"></ul>
+                </div>
+
+                <!--主图，专题地图切换控制栏-->
+                <div id="layerbox_item" style="display:none">
+                    <div class="show-list" style="position: relative">
+                        <a class="layer_item map item " id="mainMap" href="javascript:void(0)">
+                            <span class="icon">
+                                <img src="images/mainMap.png" />
+                            </span>
+                            <span class="name">项目</span>
+                        </a>
+                        <a class="layer_item inheritor item " id="inheritorMap" href="javascript:void(0)">
+                            <span class="icon">
+                                <img src="images/InheritorMap.png" />
+                            </span>
+                            <span class="name">传承人</span>
+                        </a>
+                        <a class="layer_item theme item " id="thematicMap" href="javascript:void(0)">
+                            <span class="icon">
+                                <img src="images/thematicMap.png" />
+                            </span>
+                            <span class="name">专题图</span>
+                        </a>
+                        <a class="layer_item area item " id="CloseinfluenceArea" style="display: none" href="javascript:void(0)">
+                            <span class="name">关闭影响区域</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--图例内容-->
+        <div id="mapTitle">非遗数量专题图</div>
+        <div id="legend" style="display:none;">
+
+            <div id="legend_title">
+                图例
+                <!--<a id="close" style="cursor:pointer;" onclick="document.getElementById('legend').style.display = 'none'">x</a>-->
+            </div>
+            <div id="legend_scale">
+                <ul id="legend_item"></ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="bottom" style="height: 70px; z-index:3; display: none">
+        <div class="bottomTop" style="text-align: center">
+            <div class="bottomTopCenter" style="width: 300px">
+                <a href="#" style="color: white; text-decoration: none">关于我们</a>&nbsp&nbsp|&nbsp&nbsp
+                <a href="#" style="color: white; text-decoration: none">版权说明</a>&nbsp&nbsp|&nbsp&nbsp
+                <a href="#" style="color: white; text-decoration: none">法律顾问</a>&nbsp&nbsp|&nbsp&nbsp
+                <a href="Login.aspx" style="color: white; text-decoration: none">管理员登录</a>
+            </div>
+        </div>
+        <div class="bottomDown" style="height: 60px">
+            <div class="bottomDownCenter2" style="padding-top: 10px">
+                Copyright © 2005-2014 版权所有：华中师范大学 鄂ICP备05003325号-1<br>
+                地址:湖北省武汉市洪山区珞喻路152号　邮编：430079&nbsp; &nbsp; 联系我们新闻投稿&nbsp; 鄂公网安备 42011102000286号
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/mapPhone.js"></script>
+</body>
+</html>

@@ -7,48 +7,89 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:padding="10dp"
-        android:orientation="horizontal">
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:padding="5dp">
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_weight="2">
-
+            android:padding="5dp"
+            android:layout_weight="10"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            >
             <ImageView
                 android:id="@+id/inheritor_image"
-                android:layout_width="100dp"
                 android:src="@drawable/image_background64"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
                 android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:adjustViewBounds="true"
-                android:layout_alignParentTop="true" />
+                android:scaleType="fitXY"
+                />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_weight="4">
-            <RelativeLayout
+            android:padding="5dp"
+            android:layout_weight="16"
+            android:layout_marginLeft="20dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="5dp">
+                    android:layout_weight="4"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:id="@+id/tv_inheritor_name"
+                        android:layout_alignParentLeft="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:textColor="#000000"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:gravity="center_vertical"
+                    >
+                    <TextView
+                        android:id="@+id/tv_inheritor_project"
+                        android:layout_alignParentLeft="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_weight="4"
+                    >
 
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:layout_gravity="bottom">
 
                         <TextView
-                            android:id="@+id/tv_inheritor_name"
+                            android:id="@+id/tv_inheritor_type"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
                     </RelativeLayout>
@@ -56,55 +97,26 @@
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:id="@+id/tv_inheritor_project"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical" />
-                    </RelativeLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true">
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:id="@+id/tv_inheritor_type"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:layout_gravity="bottom">
 
                         <TextView
                             android:id="@+id/tv_inheritor_rank"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            />
+                            android:layout_height="wrap_content" />
                     </RelativeLayout>
                 </LinearLayout>
-            </RelativeLayout>
+
+            </LinearLayout>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
             <ImageView
-                android:id="@+id/iv_inheritor_image_map"
-                android:layout_width="100dp"
-                android:layout_height="match_parent" />
+                android:id="@+id/image_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

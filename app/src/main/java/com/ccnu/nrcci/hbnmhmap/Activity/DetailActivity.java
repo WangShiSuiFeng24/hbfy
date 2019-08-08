@@ -8,6 +8,7 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.text.Html;
 import android.text.Spanned;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -121,9 +122,9 @@ public class DetailActivity extends Activity  {
                 boolean flag = false;
                 List<Map<String,String >> alertMsgs = new ArrayList<Map<String,String>>();
                 String name = txt_itemname.getText().toString().trim();
+                Log.i("DetailActivity",txt_name.getText().toString());
                 try{
                     Map<String,Object> cautionsInfo = new HttpHandle(getApplicationContext()).getCautionByFilterWithPage(name,"","","",1,number);
-                    System.out.println("cautionsInfo:" + cautionsInfo);
                     if (cautionsInfo.size() != 0) {
                         Map<String, Integer> pageInfo = (Map<String, Integer>) cautionsInfo.get("pageInfo");
                         totalPage = pageInfo.get("pageCount");
@@ -164,15 +165,18 @@ public class DetailActivity extends Activity  {
                     }
                 }
                 catch (Exception e){e.printStackTrace();}
+                Log.i("DetailActivity","nihaoya1");
                 for(int i=0;i<alertMsgs.size();i++){
-                    if(alertMsgs.get(i).get("INHERITOR").toString().trim().equals(txt_name.getText().toString().trim())){
+                    if(alertMsgs.get(i).get("INHERITOR").toString().contains(txt_name.getText().toString())){
                         intent.putExtra("alertMsg", (Serializable) alertMsgs.get(i));
-                        startActivity(intent);
                         flag = true;
                         break;
                     }
                 }
-                if(flag==false) {
+
+                if(flag==true) {
+                    startActivity(intent);
+                } else {
                     Toast toast = Toast.makeText(DetailActivity.this, "暂无相关信息", Toast.LENGTH_SHORT);
                     toast.show();
                 }

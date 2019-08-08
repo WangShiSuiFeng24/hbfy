@@ -7,10 +7,16 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -146,7 +152,7 @@ public class ProjectActivity extends Activity {
         txt_itemregion.setText((map.get("REGION").equals(""))?"不详":map.get("REGION"));
         //txt_itembatch.setText(map.get("BATCH").toString());
         txt_itembatch.setText((map.get("BATCH").equals(""))?"不详":map.get("BATCH"));
-        txt_iteminheritors.setText((map.get("INHERITOR").equals(""))?"不详":map.get("INHERITOR"));
+        txt_iteminheritors.setText((map.get("INHERITOR").equals(""))?"不详":map.get("INHERITOR"),TextView.BufferType.SPANNABLE);
         //跳转到传承人详情页面
         if (!(map.get("INHERITOR").equals(""))){
             Intent i = new Intent(ProjectActivity.this,DetailActivity.class);
@@ -227,6 +233,10 @@ public class ProjectActivity extends Activity {
             }
         });
 
+        getEachParagraph(txt_iteminheritors);
+        txt_iteminheritors.setMovementMethod(LinkMovementMethod.getInstance());
+
+        /*
         txt_iteminheritors.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -237,6 +247,104 @@ public class ProjectActivity extends Activity {
                 int totalItem = 0; // 共有多少项
                 int maxPage = 20;//最多浏览页数
                 String name = txt_iteminheritors.getText().toString().trim();
+                if (!name.equals("不详")) {
+                    try {
+                        Map<String, Object> cautionsInfo = new HttpHandle(getApplicationContext()).getInheritorByFilterWithPage(name, "", 1, number);
+                        System.out.println("cautionsInfo:" + cautionsInfo);
+                        if (cautionsInfo.size() != 0) {
+                            Map<String, Integer> pageInfo = (Map<String, Integer>) cautionsInfo.get("pageInfo");
+                            totalPage = pageInfo.get("pageCount");
+                            totalItem = pageInfo.get("totalCount");
+
+                            //避免加载过多内存溢出
+                            if (totalPage >= maxPage) {
+                                totalPage = maxPage;
+                                System.out.println("totalpage:" + totalPage);
+                            }
+
+                            alertMsgs.addAll((List<Map<String, String>>) cautionsInfo.get("cautions"));
+                            if (alertMsgs.size() != 0) {
+                                //myHandler.sendEmptyMessage(101);
+
+                            } else {
+
+                            Message msg = new Message();
+                            msg.what = 102;
+                            Bundle bundle = new Bundle();
+                            bundle.putString("toastText","未查询到数据");
+                            msg.setData(bundle);
+                            myHandler.sendMessage(msg);
+
+
+                            }
+                        } else {
+
+                        Message msg = new Message();
+                        msg.what = 102;
+                        Bundle bundle = new Bundle();
+                        bundle.putString("toastText","服务器出错");
+                        msg.setData(bundle);
+                        myHandler.sendMessage(msg);
+
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    intent1.putExtra("alertMsg", (Serializable) alertMsgs.get(0));
+                    startActivity(intent1);
+                    finish();
+                }
+            }
+            });*/
+
+
+        //final LinearLayout ll = (LinearLayout)findViewById(R.id.video);
+        requestUsingHttpURLConnectionGetVideoByProjectCode();
+
+        /*txt_itemVideoClick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("projectcode",projectcode);
+                Intent intent= new Intent(ProjectActivity.this,ProjectVideo.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });*/
+
+
+    }
+
+    public void getEachParagraph(TextView textView) {
+        Spannable spans = (Spannable) textView.getText();
+        Integer[] indices = getIndices(textView.getText().toString().trim(),',');
+        int start = 0;
+        int end = 0;
+
+        for (int i=0; i<=indices.length; i++) {
+            ClickableSpan clickableSpan = getClickableSpan();
+            //setSpan
+            end = (i<indices.length ? indices[i] : spans.length());
+            spans.setSpan(clickableSpan,start,end,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            start = end + 1;
+        }
+}
+
+    //click
+    private ClickableSpan getClickableSpan() {
+        return new ClickableSpan() {
+            @Override
+            public void onClick(@NonNull View view) {
+                TextView textView = (TextView)view;
+                String s = textView.getText().subSequence(textView.getSelectionStart(),textView.getSelectionEnd()).toString();
+                Intent intent1 = new Intent(ProjectActivity.this, DetailActivity.class);
+                List<Map<String, String>> alertMsgs = new ArrayList<Map<String, String>>();
+                int number = 10; // 每次获取多少条数据
+                int totalPage = 0; // 总共有多少页
+                int totalItem = 0; // 共有多少项
+                int maxPage = 20;//最多浏览页数
+                String name = s;
                 if (!name.equals("不详")) {
                     try {
                         Map<String, Object> cautionsInfo = new HttpHandle(getApplicationContext()).getInheritorByFilterWithPage(name, "", 1, number);
@@ -284,26 +392,27 @@ public class ProjectActivity extends Activity {
                     intent1.putExtra("alertMsg", (Serializable) alertMsgs.get(0));
                     startActivity(intent1);
                 }
+                Log.e("onclick--", s);
             }
-            });
 
-
-
-        //final LinearLayout ll = (LinearLayout)findViewById(R.id.video);
-        requestUsingHttpURLConnectionGetVideoByProjectCode();
-
-        /*txt_itemVideoClick.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("projectcode",projectcode);
-                Intent intent= new Intent(ProjectActivity.this,ProjectVideo.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
+            public void updateDrawState(@NonNull TextPaint ds) {
+                /**set textColor**/
+                ds.setColor(ds.linkColor);
+                /**Remove the underline**/
+                ds.setUnderlineText(false);
             }
-        });*/
+        };
+    }
 
-
+    public static Integer[] getIndices(String s,char c) {
+        int pos = s.indexOf(c,0);
+        List<Integer> indices = new ArrayList<Integer>();
+        while (pos != -1) {
+            indices.add(pos);
+            pos = s.indexOf(c,pos+1);
+        }
+        return (Integer[]) indices.toArray(new Integer[0]);
     }
 
     public void requestUsingHttpURLConnectionGetVideoByProjectCode(){

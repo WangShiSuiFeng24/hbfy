@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-    <!--xmlns:tools="http://schemas.android.com/tools"-->
-    <!--android:id="@+id/vedioviewgroup"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--tools:context=".Activity.ProjectVideo"-->
-    <!--android:orientation="vertical">-->
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vedioviewgroup"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    tools:context=".Activity.ProjectVideo"
+    android:orientation="vertical">
 
-    <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
-        android:id="@+id/videoplayer"
+
+
+    <cn.jzvd.demo.CustomJzvd.MyJzvdStd
+        android:id="@+id/jz_video"
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
+        android:layout_height="200dp" />
 
 
 

@@ -75,7 +75,7 @@ public class ProjectActivity extends Activity {
     List<String> videoname = new ArrayList<>();
     List<String> videourl = new ArrayList<>();
     //LinearLayout ll = (LinearLayout)findViewById(R.id.video);
-
+/*
     private Handler handler = new Handler(){
         public void handleMessage(Message msg){
             super.handleMessage(msg);
@@ -110,6 +110,7 @@ public class ProjectActivity extends Activity {
 
         }
     };
+*/
 
 
     @Override
@@ -300,7 +301,7 @@ public class ProjectActivity extends Activity {
 
 
         //final LinearLayout ll = (LinearLayout)findViewById(R.id.video);
-        requestUsingHttpURLConnectionGetVideoByProjectCode();
+//        requestUsingHttpURLConnectionGetVideoByProjectCode();
 
         /*txt_itemVideoClick.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -398,7 +399,8 @@ public class ProjectActivity extends Activity {
             @Override
             public void updateDrawState(@NonNull TextPaint ds) {
                 /**set textColor**/
-                ds.setColor(ds.linkColor);
+                //ds.setColor(ds.linkColor);
+                ds.setColor(Color.parseColor("#3399FF"));
                 /**Remove the underline**/
                 ds.setUnderlineText(false);
             }
@@ -414,7 +416,7 @@ public class ProjectActivity extends Activity {
         }
         return (Integer[]) indices.toArray(new Integer[0]);
     }
-
+    /*
     public void requestUsingHttpURLConnectionGetVideoByProjectCode(){
         new Thread(new Runnable() {
             @Override
@@ -460,5 +462,5 @@ public class ProjectActivity extends Activity {
                 }
             }
         }).start();
-    }
+    }*/
 }

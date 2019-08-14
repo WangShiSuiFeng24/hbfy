@@ -38,8 +38,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.jzvd.JzvdStd;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
+
+import cn.jzvd.Jzvd;
+
 
 public class ProjectVideo extends AppCompatActivity {
 
@@ -113,12 +117,18 @@ public class ProjectVideo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_project_video);
-        Bundle bundle = getIntent().getExtras();
-        String url = bundle.getString("url");
-        String videoname = bundle.getString("videoname");
-        JCVideoPlayerStandard jcVideoPlayerStandard = (JCVideoPlayerStandard) findViewById(R.id.videoplayer);
-        jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, videoname);
-        jcVideoPlayerStandard.startWindowFullscreen();
+
+//        Bundle bundle = getIntent().getExtras();
+//        String url = bundle.getString("url");
+//        String videoname = bundle.getString("name");
+//        Uri projectcover = Uri.parse(bundle.getString("projectcover")) ;
+        JzvdStd jzvdStd = (JzvdStd)findViewById(R.id.jz_video);
+        jzvdStd.setUp("http://jzvd.nathen.cn/c6e3dc12a1154626b3476d9bf3bd7266/6b56c5f0dc31428083757a45764763b0-5287d2089db37e62345123a1be272f8b.mp4","yyy");
+        //jzvdStd.thumbImageView.setImageURI("http://p.qpic.cn/videoyun/0/2449_43b6f696980311e59ed467f22794e792_1/640");
+//        MyJzvdStd jzvdStd = (MyJzvdStd) findViewById(R.id.jz_video);
+//        JCVideoPlayerStandard jcVideoPlayerStandard = (JCVideoPlayerStandard) findViewById(R.id.videoplayer);
+//        jcVideoPlayerStandard.setUp(url, JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, videoname);
+//        jcVideoPlayerStandard.startWindowFullscreen();
 
 
 
@@ -133,17 +143,15 @@ public class ProjectVideo extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (JCVideoPlayer.backPress()) {
-            JCVideoPlayer.releaseAllVideos();
+        if (Jzvd.backPress()) {
             return;
         }
-        JCVideoPlayer.releaseAllVideos();
         super.onBackPressed();
     }
     @Override
     protected void onPause() {
         super.onPause();
-        JCVideoPlayer.releaseAllVideos();
+        Jzvd.releaseAllVideos();
     }
 
     /*public void requestUsingHttpURLConnectionGetVideoByProjectCode(){

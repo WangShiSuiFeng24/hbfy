@@ -235,7 +235,7 @@ public class ProjectFragment extends android.app.Fragment {
             @Override
             public void onClick(View v) {
                 Name.setText("");
-
+                //代码调用点击事件(模拟人手去触摸控件)
                 search.performClick();
                 //TODO 返回全部查询结果
                 /*searchMode=3;
@@ -400,6 +400,7 @@ public class ProjectFragment extends android.app.Fragment {
                 }
                 if(searchMode==1||searchMode==2){
                     searchCancle.setImageResource(R.drawable.searchcancle);
+                    //光标进入Name控件
                     Name.requestFocus();
                 }else{
                     searchCancle.setImageResource(0);
@@ -491,7 +492,8 @@ public class ProjectFragment extends android.app.Fragment {
 
     }
 
-    Handler myHandler = new Handler() {
+    private Handler myHandler = new Handler() {
+        @Override
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
                 case 100:

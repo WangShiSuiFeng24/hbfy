@@ -25,7 +25,8 @@
         </activity>
         <activity android:name=".Activity.DetailActivity" />
         <activity android:name=".Activity.ProjectActivity" />
-        <activity android:name=".Activity.ProjectVideo" />
+        <activity android:name=".Activity.ProjectVideo" ></activity>
+        <activity android:name=".Activity.VedioDisplay" ></activity>
         <activity
             android:name=".Activity.ImageActivity"
             android:label="@string/title_activity_image"

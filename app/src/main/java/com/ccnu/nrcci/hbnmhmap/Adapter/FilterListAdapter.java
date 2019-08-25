@@ -35,12 +35,12 @@ public class FilterListAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return data.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
@@ -69,9 +69,9 @@ public class FilterListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if (data.get(position).isNameIsChecked()) {
-                    ((ImageView) v).setImageResource(R.drawable.sort_common_down);
-                } else {
                     ((ImageView) v).setImageResource(R.drawable.sort_common_up);
+                } else {
+                    ((ImageView) v).setImageResource(R.drawable.sort_common_down);
                 }
                 adapter.notifyDataSetChanged(data.get(position).isNameIsChecked(), data.get(position).getFilterContent());
                 data.get(position).setNameIsChecked(!data.get(position).isNameIsChecked());

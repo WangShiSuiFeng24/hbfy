@@ -1,5 +1,6 @@
 package com.ccnu.nrcci.hbnmhmap.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,10 +10,13 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -228,9 +232,16 @@ public class InheritorFragment extends android.app.Fragment {
         searchCancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Name.setText("");
-
-                search.performClick();
+                if(TextUtils.isEmpty(Name.getText().toString())) {
+                    //Name为空则不处理
+                } else {
+                    Name.setText("");
+                    //弹出键盘
+                    InputMethodManager manager = ((InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE));
+                    if (manager != null) manager.showSoftInput(Name,0);
+                    //代码调用点击事件(模拟人手去触摸控件)
+                    //search.performClick();
+                }
                 //TODO 返回全部查询结果
                 /*searchMode=3;
                 String name= "getCautionWithPage"+1;
@@ -337,6 +348,10 @@ public class InheritorFragment extends android.app.Fragment {
                 if (HttpHandle.isNetworkAvailable(getActivity())) {
                     querysql = null;
                     name = Name.getText().toString().trim();
+                    if(TextUtils.isEmpty(name) && !(drawerLayout.isDrawerOpen(GravityCompat.END))) {
+                        Toast.makeText(getActivity(),"请输入搜索内容",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     if(drawerLayout.isDrawerOpen(GravityCompat.END))
                     {
                         rank=((TextView) filterlist.getChildAt(0).findViewById(R.id.attr_list_result)).getText().toString();
@@ -378,8 +393,8 @@ public class InheritorFragment extends android.app.Fragment {
                         }
                     } else {
                         if (mToast == null) {
-                            mToast = Toast.makeText(getActivity(), "服务器出错", Toast.LENGTH_SHORT);
-                        }else mToast.setText("服务器出错");
+                            mToast = Toast.makeText(getActivity(), "没有您想要的结果,请重新输入", Toast.LENGTH_SHORT);
+                        }else mToast.setText("没有您想要的结果,请重新输入");
                         mToast.show();
                         blank.setVisibility(View.VISIBLE);
                         listView.setVisibility(View.GONE);
@@ -393,13 +408,51 @@ public class InheritorFragment extends android.app.Fragment {
                     listView.setVisibility(View.GONE);
                 }
                 if(searchMode==1||searchMode==2){
-                    searchCancle.setImageResource(R.drawable.searchcancle);
-                    Name.requestFocus();
+                    if(!TextUtils.isEmpty(name)){
+                        searchCancle.setImageResource(R.drawable.searchcancle);
+                    }
+                    //光标进入Name控件
+                    Name.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Name.requestFocus();
+                        }
+                    },200);
                 }else{
                     searchCancle.setImageResource(0);
                 }
             }
         });
+
+        Name.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                //软件盘上的回车键,改成搜索键
+                if(i == KeyEvent.KEYCODE_ENTER && keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+                    //隐藏键盘
+                    ((InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE))
+                            .hideSoftInputFromWindow(view.getWindowToken(),
+                                    InputMethodManager.HIDE_NOT_ALWAYS);
+                    //判空操作
+                    if(Name.getText().toString().trim().length()==0) {
+                        Toast.makeText(getActivity(),"请输入搜索内容",Toast.LENGTH_SHORT).show();
+                        Name.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Name.requestFocus();
+                            }
+                        },200);
+                        return false;
+                    } else {
+                        //searchCancle.setImageResource(R.drawable.searchcancle);
+                        //搜索操作
+                        search.performClick();
+                    }
+                }
+                return false;
+            }
+        });
+
 
         //跳转至详细页面
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

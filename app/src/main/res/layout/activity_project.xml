@@ -8,16 +8,58 @@
     android:focusable="true"
     android:focusableInTouchMode="true">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/clik_normal"
+        >
+
+
+        <LinearLayout
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/back" />
+        </LinearLayout>
+
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+
+        >
+        <TextView
+            android:id="@+id/txtView_ItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:textColorHint="#FFFFFF"
+            android:layout_centerInParent="true"
+            android:hint="项目名"
+            />
+    </LinearLayout>
+    </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
-
+            <!--
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,7 +77,7 @@
                     android:textColor="#000"
                     android:textSize="18sp" />
             </LinearLayout>
-
+            -->
             <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -348,7 +390,7 @@
                     <!--android:layout_marginTop="7dp"-->
                     <!--android:textSize="12sp" />-->
             <!--</LinearLayout>-->
-
+            <!--
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
@@ -381,7 +423,7 @@
                     android:textColor="#000"
                     android:textSize="18sp" />
             </LinearLayout>
-
+            -->
             <LinearLayout
                 android:id="@+id/video"
                 android:layout_width="match_parent"
@@ -394,6 +436,33 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/txtView_ImageClick"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="图片"
+            android:background="@color/clik_normal"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/txtView_VideoClick"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="视频"
+            android:background="@color/clik_normal"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:layout_weight="1"/>
+    </LinearLayout>
 
 
 </LinearLayout>

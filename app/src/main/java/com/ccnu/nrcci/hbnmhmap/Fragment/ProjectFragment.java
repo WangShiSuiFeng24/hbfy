@@ -469,10 +469,10 @@ public class ProjectFragment extends android.app.Fragment {
                 intent.putExtra("alertMsg",(Serializable) alertMsgs.get(position));
                 System.out.println(alertMsgs.get(position));
                 getActivity().startActivity(intent);
+                //getActivity().overridePendingTransition(R.anim.slide_in_right,0);
             }
         });
     }
-
 
     public void setListView(){
 

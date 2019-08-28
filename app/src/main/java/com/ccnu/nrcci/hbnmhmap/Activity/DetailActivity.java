@@ -41,7 +41,11 @@ public class DetailActivity extends Activity  {
     private TextView txt_information;
     private TextView txt_experience;
     private TextView txt_influence;
+
+    private ImageView back;
+
     private ImageLoader imageLoader=new ImageLoader();
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,6 +66,8 @@ public class DetailActivity extends Activity  {
         txt_information = (TextView) findViewById(R.id.txtView_InheritorInfo);
         txt_experience = (TextView) findViewById(R.id.txtView_InheritorExper);
         txt_influence = (TextView) findViewById(R.id.txtView_InheritorInflu);
+
+        back =  findViewById(R.id.back);
 
         Intent intent = getIntent();
         Map<String,String> map = (Map<String,String>)intent.getSerializableExtra("alertMsg");
@@ -180,6 +186,14 @@ public class DetailActivity extends Activity  {
                     Toast toast = Toast.makeText(DetailActivity.this, "暂无相关信息", Toast.LENGTH_SHORT);
                     toast.show();
                 }
+            }
+        });
+
+        //点击back,返回到上一个界面
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

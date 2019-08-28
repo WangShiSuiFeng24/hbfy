@@ -139,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:headerDividersEnabled="true"
                     android:id="@+id/lv_fragment_inheritor_alertList"
-                    android:divider="#000"
+                    android:divider="@drawable/listview_divider"
                     android:dividerHeight="1dp"
                     android:gravity="center_vertical" />
             </android.support.v4.widget.SwipeRefreshLayout>

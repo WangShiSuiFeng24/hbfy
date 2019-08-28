@@ -60,10 +60,12 @@ public class ProjectActivity extends Activity {
     private TextView txt_itemrelatedcharacters;
     private TextView txt_itemprojectfeatures;
 
-    private ViewFlipper VF_itemPics;
-    private ImageView itemPic1;
-    private ImageView itemPic2;
-    private ImageView itemPic3;
+//    private ViewFlipper VF_itemPics;
+//    private ImageView itemPic1;
+//    private ImageView itemPic2;
+//    private ImageView itemPic3;
+
+    private ImageView back;
 
     private TextView txtView_ImageClick;
     private TextView txt_itemVideoClick;
@@ -134,6 +136,8 @@ public class ProjectActivity extends Activity {
         itemPic1 = (ImageView)findViewById(R.id.img_itemPic1);
         itemPic1 = (ImageView)findViewById(R.id.img_itemPic1);
         itemPic1 = (ImageView)findViewById(R.id.img_itemPic1);*/
+
+        back =  findViewById(R.id.back);
 
         txtView_ImageClick = (TextView) findViewById(R.id.txtView_ImageClick);
         txt_itemVideoClick = (TextView) findViewById(R.id.txtView_VideoClick);
@@ -234,6 +238,14 @@ public class ProjectActivity extends Activity {
             }
         });
 
+        //点击back,返回到上一个界面
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         getEachParagraph(txt_iteminheritors);
         txt_iteminheritors.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -315,6 +327,12 @@ public class ProjectActivity extends Activity {
         });*/
 
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 
     public void getEachParagraph(TextView textView) {

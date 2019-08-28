@@ -143,7 +143,7 @@
                     android:id="@+id/lv_fragment_alert_alertList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:divider="#000"
+                    android:divider="@drawable/listview_divider"
                     android:dividerHeight="1dp"
                     android:gravity="center_vertical"
                     android:headerDividersEnabled="true" />
@@ -183,7 +183,9 @@
             android:divider="@null"
             android:dividerHeight="14dp"
             android:padding="10dp"
-            android:scrollbars="none"></ListView>
+            android:scrollbars="none">
+        </ListView>
+
         <LinearLayout
             android:id="@+id/ll_alert_fiterbtn"
             android:layout_width="match_parent"

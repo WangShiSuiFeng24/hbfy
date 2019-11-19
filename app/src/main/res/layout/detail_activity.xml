@@ -38,7 +38,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textColor="#000"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:textColorHint="#FFFFFF"
                 android:layout_centerInParent="true"
                 android:hint="姓名"
@@ -306,14 +306,14 @@
                     android:textColor="#000"
                     android:background="@color/clik_normal"
                     android:text="基本信息"
-                    android:textSize="18sp" />
+                    android:textSize="22sp" />
 
                 <TextView
                     android:id="@+id/txtView_InheritorInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
-                    android:textSize="13sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -329,13 +329,13 @@
                     android:textColor="#000"
                     android:background="@color/clik_normal"
                     android:text="从艺经历"
-                    android:textSize="18sp"/>
+                    android:textSize="22sp"/>
                 <TextView
                     android:id="@+id/txtView_InheritorExper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
-                    android:textSize="13sp"/>
+                    android:textSize="18sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -351,13 +351,13 @@
                     android:textColor="#000"
                     android:background="@color/clik_normal"
                     android:text="演述能力及影响"
-                    android:textSize="18sp"/>
+                    android:textSize="22sp"/>
                 <TextView
                     android:id="@+id/txtView_InheritorInflu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
-                    android:textSize="13sp"/>
+                    android:textSize="18sp"/>
             </LinearLayout>
 
         </LinearLayout>

@@ -47,7 +47,7 @@ import java.util.zip.Inflater;
  */
 
 //新写的Activity一定要记得在manifest中注册！
-public class VedioDisplay extends Activity{
+public class VideoDisplay extends Activity{
 
     Map<String,String> Vedio_Name = new HashMap<>();
     Map<String,String> Vedio_Url = new HashMap<>();
@@ -114,7 +114,7 @@ public class VedioDisplay extends Activity{
 //                    bundle.putString("url",mListBean.getVedio_url());
 //                    bundle.putString("name",mListBean.getVedio_name());
 //                    bundle.putString("projectcover",mListBean.getVedio_projectcover());
-                    //Intent intent = new Intent(VedioDisplay.this,ProjectVideo.class);
+                    //Intent intent = new Intent(VideoDisplay.this,ProjectVideo.class);
                     //intent.putExtras(bundle);
                     //Toast.makeText(getApplicationContext(),"你大爷的！",Toast.LENGTH_SHORT).show();
                     //Log.i("RRR","tyu");
@@ -134,6 +134,12 @@ public class VedioDisplay extends Activity{
                 finish();
             }
         });
+    }
+
+    public static void actionStart(Context context, String projectcode) {
+        Intent intent = new Intent(context, VideoDisplay.class);
+        intent.putExtra("projectcode", projectcode);
+        context.startActivity(intent);
     }
 
     public void requestUsingHttpURLConnectionGetVedio(){

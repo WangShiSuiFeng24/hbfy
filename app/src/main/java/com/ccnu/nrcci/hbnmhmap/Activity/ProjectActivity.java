@@ -318,25 +318,27 @@ public class ProjectActivity extends Activity {
         //final LinearLayout ll = (LinearLayout)findViewById(R.id.video);
 //        requestUsingHttpURLConnectionGetVideoByProjectCode();
 
-        /*txt_itemVideoClick.setOnClickListener(new View.OnClickListener() {
+        txt_itemVideoClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("projectcode",projectcode);
-                Intent intent= new Intent(ProjectActivity.this,ProjectVideo.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                VideoDisplay.actionStart(ProjectActivity.this, projectcode);
+
+//                Bundle bundle = new Bundle();
+//                bundle.putString("projectcode",projectcode);
+//                Intent intent= new Intent(ProjectActivity.this,ProjectVideo.class);
+//                intent.putExtras(bundle);
+//                startActivity(intent);
             }
-        });*/
+        });
 
 
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
-    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+//    }
 
     public void getEachParagraph(TextView textView) {
         Spannable spans = (Spannable) textView.getText();

@@ -1,6 +1,8 @@
 package com.ccnu.nrcci.hbnmhmap.Activity;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,7 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -76,8 +80,24 @@ public class ImageActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_project_image);
-        Bundle bundle = getIntent().getExtras();
-        projectcode = bundle.getString("projectcode");
+
+        Intent intent = getIntent();
+        projectcode = intent.getStringExtra("projectcode");
+        String item_name = intent.getStringExtra("item_name");
+
+        TextView txtView_ItemName = findViewById(R.id.txtView_ItemName);
+        txtView_ItemName.setText(item_name);
+
+        ImageView back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+//        Bundle bundle = getIntent().getExtras();
+//        projectcode = bundle.getString("projectcode");
         Log.i("TT",projectcode);
         //Log.i("111",projectcode);
         requestUsingHttpURLConnectionGetPicByProjectCode();
@@ -125,6 +145,13 @@ public class ImageActivity extends Activity {
                 }
             }
         }).start();
+    }
+
+    public static void actionStart(Context context, String projectcode, String item_name) {
+        Intent intent = new Intent(context, ImageActivity.class);
+        intent.putExtra("projectcode", projectcode);
+        intent.putExtra("item_name", item_name);
+        context.startActivity(intent);
     }
 
 }

@@ -229,12 +229,15 @@ public class ProjectActivity extends Activity {
         txtView_ImageClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("projectcode",projectcode);
-                Log.i("TA",projectcode);
-                Intent intent= new Intent(ProjectActivity.this,ImageActivity.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                ImageActivity.actionStart(ProjectActivity.this, projectcode, map.get("NAME"));
+
+
+//                Bundle bundle = new Bundle();
+//                bundle.putString("projectcode",projectcode);
+//                Log.i("TA",projectcode);
+//                Intent intent= new Intent(ProjectActivity.this,ImageActivity.class);
+//                intent.putExtras(bundle);
+//                startActivity(intent);
             }
         });
 

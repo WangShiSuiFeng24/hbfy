@@ -1,7 +1,5 @@
 package com.ccnu.nrcci.hbnmhmap.Fragment;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,13 +22,11 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ccnu.nrcci.hbnmhmap.Activity.DetailActivity;
 import com.ccnu.nrcci.hbnmhmap.Activity.ProjectActivity;
 import com.ccnu.nrcci.hbnmhmap.Adapter.FilterListAdapter;
 import com.ccnu.nrcci.hbnmhmap.Adapter.ProjectListViewAdapter;

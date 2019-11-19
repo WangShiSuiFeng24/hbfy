@@ -10,22 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:background="#3399CC"
+        android:background="@color/clik_normal"
         >
 
+
         <LinearLayout
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
             android:id="@+id/vedio_back"
-            >
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/back"
-                />
+                android:src="@drawable/back" />
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -39,33 +38,76 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textColor="#080808"
-                android:textSize="18sp"
+                android:textColor="#000"
+                android:textSize="24sp"
                 android:textColorHint="#FFFFFF"
                 android:layout_centerInParent="true"
                 android:text="视频列表"
                 />
         </LinearLayout>
-
-
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="70dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:orientation="vertical"-->
-            <!--android:gravity="center"-->
-            <!--&gt;-->
-
-            <!--<ImageView-->
-                <!--android:layout_width="25dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:src="@drawable/home"-->
-                <!--/>-->
-        <!--</LinearLayout>-->
-
-
     </RelativeLayout>
+
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="5dp"-->
+<!--        android:background="#3399CC"-->
+<!--        >-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:id="@+id/vedio_back"-->
+<!--            >-->
+<!--            <ImageView-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:src="@drawable/back"-->
+<!--                />-->
+<!--        </LinearLayout>-->
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+
+<!--            >-->
+<!--            <TextView-->
+<!--                android:id="@+id/vedio_list_name"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:gravity="center"-->
+<!--                android:textColor="#080808"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textColorHint="#FFFFFF"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:text="视频列表"-->
+<!--                />-->
+<!--        </LinearLayout>-->
+
+
+
+<!--        &lt;!&ndash;<LinearLayout&ndash;&gt;-->
+<!--            &lt;!&ndash;android:layout_width="70dp"&ndash;&gt;-->
+<!--            &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+<!--            &lt;!&ndash;android:layout_alignParentRight="true"&ndash;&gt;-->
+<!--            &lt;!&ndash;android:orientation="vertical"&ndash;&gt;-->
+<!--            &lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+<!--            &lt;!&ndash;&gt;&ndash;&gt;-->
+
+<!--            &lt;!&ndash;<ImageView&ndash;&gt;-->
+<!--                &lt;!&ndash;android:layout_width="25dp"&ndash;&gt;-->
+<!--                &lt;!&ndash;android:layout_height="30dp"&ndash;&gt;-->
+<!--                &lt;!&ndash;android:src="@drawable/home"&ndash;&gt;-->
+<!--                &lt;!&ndash;/>&ndash;&gt;-->
+<!--        &lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+
+<!--    </RelativeLayout>-->
 
     <ListView
         android:id="@+id/vediolist"

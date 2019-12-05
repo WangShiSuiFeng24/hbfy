@@ -14,7 +14,7 @@ import android.os.Message;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.ccnu.nrcci.hbnmhmap.JavaBean.VideoListBean;
+import com.ccnu.nrcci.hbnmhmap.JavaBean.Video;
 import com.ccnu.nrcci.hbnmhmap.R;
 import com.ccnu.nrcci.hbnmhmap.Adapter.VideoListAdapter;
 
@@ -52,7 +52,7 @@ public class VideoDisplay extends Activity{
 
     static String url = "http://202.114.41.165:8080";
     StringBuilder response_video;
-    List<VideoListBean> itemVideoList;
+    List<Video> itemVideoList;
     private Context context;
     private String projectCode;
     private VideoListAdapter videoListAdapter;
@@ -84,7 +84,7 @@ public class VideoDisplay extends Activity{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                VideoListBean mListBean = (VideoListBean)videoListAdapter.getItem(position);
+                Video mListBean = (Video)videoListAdapter.getItem(position);
                 if (mListBean.getVideo_url().equals("")){
                     Toast.makeText(getApplicationContext(),"暂无视频资源",Toast.LENGTH_SHORT).show();
                 }
@@ -141,7 +141,7 @@ public class VideoDisplay extends Activity{
         new Thread(new Runnable() {
             @Override
             public void run() {
-                VideoListBean bean;
+                Video video;
                 HttpURLConnection connection = null;
                 StringBuilder response = null;
                 itemVideoList = new ArrayList<>();
@@ -169,13 +169,13 @@ public class VideoDisplay extends Activity{
                     for (int i = 0;i < a.length();i++) {
                         JSONObject b = a.getJSONObject(i);
                         if (b.getString("LinkCode").equals(projectCode)) {
-                            bean = new VideoListBean();
-                            bean.setVideo_name(b.getString("Name").equals("null")?"":b.getString("Name"));
-                            bean.setVideo_intro(b.getString("Introduce").equals("null")?"暂无简介":b.getString("Introduce"));
-                            bean.setVideo_projectcover(url + b.getString("PorjectCover"));
-                            bean.setVideo_place(b.getString("Place").equals("null")?"地区不详":b.getString("Place"));
-                            bean.setVideo_url(b.getString("ResourceUrl").equals("null")?"":"http://202.114.41.165:8080"+b.getString("ResourceUrl"));
-                            itemVideoList.add(bean);
+                            video = new Video();
+                            video.setVideo_name(b.getString("Name").equals("null")?"":b.getString("Name"));
+                            video.setVideo_intro(b.getString("Introduce").equals("null")?"暂无简介":b.getString("Introduce"));
+                            video.setVideo_projectCover(url + b.getString("PorjectCover"));
+                            video.setVideo_place(b.getString("Place").equals("null")?"地区不详":b.getString("Place"));
+                            video.setVideo_url(b.getString("ResourceUrl").equals("null")?"":"http://202.114.41.165:8080"+b.getString("ResourceUrl"));
+                            itemVideoList.add(video);
                         }
                     }
                     Message msg = new Message();

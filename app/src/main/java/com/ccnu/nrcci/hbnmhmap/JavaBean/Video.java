@@ -6,13 +6,13 @@ package com.ccnu.nrcci.hbnmhmap.JavaBean;
  * @time: 2019/8/1 16:42
  * @version:V1.0
  */
-public class VideoListBean {
+public class Video {
 
     private String video_name;
     private String video_place;
     private String video_intro;
     private String video_url;
-    private String video_projectcover;
+    private String video_projectCover;
 
     public String getVideo_name(){
         return video_name;
@@ -46,11 +46,11 @@ public class VideoListBean {
         this.video_url = video_url;
     }
 
-    public String getVideo_projectcover(){
-        return video_projectcover;
+    public String getVideo_projectCover(){
+        return video_projectCover;
     }
 
-    public void setVideo_projectcover(String video_projectcover){
-        this.video_projectcover = video_projectcover;
+    public void setVideo_projectCover(String video_projectCover){
+        this.video_projectCover = video_projectCover;
     }
 }

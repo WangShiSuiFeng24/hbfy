@@ -3,7 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="clik_normal">#D0E5FF</color>
-    <color name="clik_press">#FFFFFF</color>
-    <color name="colorfontBlack">#000000</color>
+    <color name="click_normal">#D0E5FF</color>
+    <color name="click_press">#FFFFFF</color>
+    <color name="colorFontBlack">#000000</color>
 </resources>

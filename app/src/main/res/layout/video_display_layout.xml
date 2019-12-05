@@ -47,7 +47,7 @@
                     android:orientation="vertical"
                     >
                     <TextView
-                        android:id="@+id/vedio_name"
+                        android:id="@+id/video_name"
                         android:layout_alignParentLeft="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
                     android:layout_marginBottom="20dp"
                     >
                     <TextView
-                        android:id="@+id/vedio_region"
+                        android:id="@+id/video_region"
                         android:layout_alignParentLeft="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                     >
 
                         <TextView
-                            android:id="@+id/vedio_intro"
+                            android:id="@+id/video_intro"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:singleLine="true"

@@ -10,12 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:background="@color/clik_normal"
+        android:background="@color/click_normal"
         >
 
 
         <LinearLayout
-            android:id="@+id/vedio_back"
+            android:id="@+id/video_back"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:gravity="center">
@@ -33,7 +33,7 @@
 
             >
             <TextView
-                android:id="@+id/vedio_list_name"
+                android:id="@+id/video_list_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -110,9 +110,8 @@
 <!--    </RelativeLayout>-->
 
     <ListView
-        android:id="@+id/vediolist"
+        android:id="@+id/videoList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        ></ListView>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

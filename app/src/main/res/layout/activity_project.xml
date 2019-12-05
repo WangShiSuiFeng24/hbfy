@@ -131,7 +131,7 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/txtView_itemtype"
+                    android:id="@+id/txtView_itemType"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -153,7 +153,7 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/txtView_itemlevel"
+                    android:id="@+id/txtView_itemLevel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -181,7 +181,7 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/txtView_itemregion"
+                    android:id="@+id/txtView_itemRegion"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -203,7 +203,7 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/txtView_itembatch"
+                    android:id="@+id/txtView_itemBatch"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -321,7 +321,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/itemRelatedcharacters"
+                android:id="@+id/itemRelatedCharacters"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -337,7 +337,7 @@
                     android:textSize="22sp" />
 
                 <TextView
-                    android:id="@+id/txtView_itemRelatedcharacters"
+                    android:id="@+id/txtView_itemRelatedCharacters"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
@@ -424,14 +424,6 @@
                     android:textSize="18sp" />
             </LinearLayout>
             -->
-            <LinearLayout
-                android:id="@+id/video"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical"></LinearLayout>
-
-
 
         </LinearLayout>
 

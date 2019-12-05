@@ -52,7 +52,7 @@ public class VideoDisplay extends Activity{
 
     static String url = "http://202.114.41.165:8080";
     StringBuilder response_video;
-    List<Video> itemVideoList;
+    List<Video> videoList;
     private Context context;
     private String projectCode;
     private VideoListAdapter videoListAdapter;
@@ -63,7 +63,7 @@ public class VideoDisplay extends Activity{
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (msg.what == 1){
-                videoListAdapter=new VideoListAdapter(context,itemVideoList);
+                videoListAdapter=new VideoListAdapter(context,videoList);
                 listView.setAdapter(videoListAdapter);
             }
         }
@@ -84,8 +84,8 @@ public class VideoDisplay extends Activity{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Video mListBean = (Video)videoListAdapter.getItem(position);
-                if (mListBean.getVideo_url().equals("")){
+                Video video = (Video)videoListAdapter.getItem(position);
+                if (video.getVideo_url().equals("")){
                     Toast.makeText(getApplicationContext(),"暂无视频资源",Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -101,7 +101,7 @@ public class VideoDisplay extends Activity{
                     Intent i = new Intent();
                     i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     i.setAction(Intent.ACTION_VIEW);
-                    Uri uri= Uri.parse(mListBean.getVideo_url());
+                    Uri uri= Uri.parse(video.getVideo_url());
                     i.setDataAndType(uri,"video/*");
                     startActivity(i);
 //                    Log.i("RRR","tyu");
@@ -119,7 +119,7 @@ public class VideoDisplay extends Activity{
             }
         });
         Bundle bundle = getIntent().getExtras();
-        projectCode = bundle.getString("projectcode");
+        projectCode = bundle.getString("projectCode");
         requestUsingHttpURLConnectionGetVideo();
         videoBack = (LinearLayout)findViewById(R.id.video_back);
         videoBack.setOnClickListener(new View.OnClickListener() {
@@ -131,9 +131,9 @@ public class VideoDisplay extends Activity{
         });
     }
 
-    public static void actionStart(Context context, String projectcode) {
+    public static void actionStart(Context context, String projectCode) {
         Intent intent = new Intent(context, VideoDisplay.class);
-        intent.putExtra("projectcode", projectcode);
+        intent.putExtra("projectCode", projectCode);
         context.startActivity(intent);
     }
 
@@ -144,7 +144,7 @@ public class VideoDisplay extends Activity{
                 Video video;
                 HttpURLConnection connection = null;
                 StringBuilder response = null;
-                itemVideoList = new ArrayList<>();
+                videoList = new ArrayList<>();
                 try {
                     URL url = new URL("http://202.114.41.165:8080/FYProject/servlet/GetVideosByProjectCode"); // 声明一个URL,注意——如果用百度首页实验，请使用https
                     connection = (HttpURLConnection) url.openConnection(); // 打开该URL连接
@@ -175,7 +175,7 @@ public class VideoDisplay extends Activity{
                             video.setVideo_projectCover(url + b.getString("PorjectCover"));
                             video.setVideo_place(b.getString("Place").equals("null")?"地区不详":b.getString("Place"));
                             video.setVideo_url(b.getString("ResourceUrl").equals("null")?"":"http://202.114.41.165:8080"+b.getString("ResourceUrl"));
-                            itemVideoList.add(video);
+                            videoList.add(video);
                         }
                     }
                     Message msg = new Message();
